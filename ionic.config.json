@@ -1,0 +1,7 @@
+{
+  "name": "bluebird",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
