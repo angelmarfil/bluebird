@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Monitoreo
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,24 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Monitoreo</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <ion-card color="danger">
+        <ion-card-header>
+          <ion-icon name="eyedrop" size="large"></ion-icon>
+          <ion-card-title>Limpio</ion-card-title>
+          <ion-card-subtitle>Contaminación del agua</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card color="primary">
+        <ion-card-header>
+          <ion-icon name="logo-twitter" size="large"></ion-icon>
+          <ion-card-title>Presentes</ion-card-title>
+          <ion-card-subtitle>Presencia de Aves</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+
 </ion-content>
