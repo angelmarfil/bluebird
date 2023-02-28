@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Control
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,40 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Control</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Sensores y actuadores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="Sensor ultrasónico" src="assets/img/ultrasonico.jpg" />
+          </ion-thumbnail>
+          <ion-label>Desactivar ultrasónico</ion-label>
+          <ion-toggle slot="end" [checked]="true"></ion-toggle>
+        </ion-item>
+  
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="Sensor de turbidez" src="assets/img/turbidez.jpg" />
+          </ion-thumbnail>
+          <ion-label>Desactivar turbidez</ion-label>
+          <ion-toggle slot="end" [checked]="true"></ion-toggle>
+        </ion-item>
+    
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <img alt="Servomotor" src="assets/img/servo.jpg" />
+          </ion-thumbnail>
+          <ion-label>Activar servomotor</ion-label>
+          <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
