@@ -3,6 +3,11 @@
     <ion-title>
       Control
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon name="log-out" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,9 +18,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card>
+  <ion-card *ngIf="loaded">
     <ion-card-header>
-      <ion-card-title>Sensores y actuadores</ion-card-title>
+      <ion-card-title>Sensores</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
@@ -23,26 +28,105 @@
           <ion-thumbnail slot="start">
             <img alt="Sensor ultrasónico" src="assets/img/ultrasonico.jpg" />
           </ion-thumbnail>
-          <ion-label>Desactivar ultrasónico</ion-label>
-          <ion-toggle slot="end" [checked]="true"></ion-toggle>
+          <ion-label text-wrap>Desactivar ultrasónico (Aves)</ion-label>
+          <ion-toggle slot="end" [checked]="true" [(ngModel)]="isToggled1" (ionChange)="sendDataToFirebase(isToggled1, '/sensores/ultrasonicoAves')"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="Sensor ultrasónico" src="assets/img/ultrasonico.jpg" />
+          </ion-thumbnail>
+          <ion-label text-wrap>Desactivar ultrasónico (Nivel de Agua)</ion-label>
+          <ion-toggle slot="end" [(ngModel)]="isToggled2" (ionChange)="sendDataToFirebase(isToggled2,'/sensores/ultrasonicoNivel')"></ion-toggle>
         </ion-item>
   
         <ion-item>
           <ion-thumbnail slot="start">
             <img alt="Sensor de turbidez" src="assets/img/turbidez.jpg" />
           </ion-thumbnail>
-          <ion-label>Desactivar turbidez</ion-label>
-          <ion-toggle slot="end" [checked]="true"></ion-toggle>
-        </ion-item>
-    
-        <ion-item lines="none">
-          <ion-thumbnail slot="start">
-            <img alt="Servomotor" src="assets/img/servo.jpg" />
-          </ion-thumbnail>
-          <ion-label>Activar servomotor</ion-label>
-          <ion-toggle slot="end"></ion-toggle>
+          <ion-label text-wrap>Desactivar turbidez (Contaminación)</ion-label>
+          <ion-toggle slot="end" [checked]="true" [(ngModel)]="isToggled3" (ionChange)="sendDataToFirebase(isToggled3,'/sensores/turbidez')"></ion-toggle>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
+  
+  <ion-card *ngIf="loaded">
+    <ion-card-header>
+      <ion-card-title>Actuadores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="Bomba de agua" src="assets/img/bomba.jpg" />
+          </ion-thumbnail>
+          <ion-label text-wrap>Activar bomba de agua (Rellenar)</ion-label>
+          <ion-toggle slot="end" [(ngModel)]="isToggled4" (ionChange)="sendDataToFirebase(isToggled4,'/actuadores/bombaEntrada')"></ion-toggle>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <img alt="Bomba de agua" src="assets/img/bomba.jpg" />
+          </ion-thumbnail>
+          <ion-label text-wrap>Activar bomba de agua (Vaciar)</ion-label>
+          <ion-toggle slot="end" [(ngModel)]="isToggled5" (ionChange)="sendDataToFirebase(isToggled5,'/actuadores/bombaSalida')"></ion-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="!loaded">
+    <ion-card-header>
+      <ion-card-title>Sensores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-item>
+  
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card *ngIf="!loaded">
+    <ion-card-header>
+      <ion-card-title>Actuadores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

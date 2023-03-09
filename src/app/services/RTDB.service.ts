@@ -9,7 +9,12 @@ export class RTDBService {
 
     constructor(private db: AngularFireDatabase) { }
 
-    getData() {
-        return this.db.list('/').valueChanges();
+    getData(path: string) {
+        return this.db.object(path).valueChanges();
     }
+
+    sendBooleanData(value: boolean, path: string) {
+        return this.db.object(path).set(value);
+    }
+
 }

@@ -1,17 +1,90 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Acerca de
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon name="log-out" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Acerca de</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-accordion-group>
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>Nivel del agua</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>
+          Este dispositivo mide el nivel de agua con un sensor ultrasónico y la unidad de medida es en centímetros (cm). 
+        </p>
+        <p>La tarjeta cambia de color y muestra un mensaje dependiendo del valor del dato medido:</p>
+         
+        <p>
+          <ion-text color="success">"Lleno" para 32cm o más.</ion-text> 
+        </p>
+        <p>
+          <ion-text color="warning">"Medio" para 16cm o más, pero menos de 32cm.</ion-text>
+        </p>
+        <p>
+          <ion-text color="danger">"Vacío" para menos de 16cm.</ion-text>
+        </p>
+      
+      </div>
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label>Contaminación del agua</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>
+          Este dispositivo mide la contaminación del agua con un sensor de turbidez y la unidad de medida es en centímetros (cm). 
+        </p>
+        <p>La tarjeta cambia de color y muestra un mensaje dependiendo del valor del dato medido:</p>
+         
+        <p>
+          <ion-text color="danger">Color Rojo y "Sucio" para 32cm o más.</ion-text>
+        </p>
+        <p>
+          <ion-text color="warning">Color Amarillo y "Turbio" para 16cm o más, pero menos de 32cm.</ion-text>
+        </p>
+      
+        <p>
+          <ion-text color="success">Color Verde y "Limpio" para menos de 16cm.</ion-text> 
+        </p>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="third">
+      <ion-item slot="header" color="light">
+        <ion-label>Detección de aves</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>
+          Este dispositivo mide la contaminación del agua con un sensor de turbidez y la unidad de medida es en centímetros (cm). 
+        </p>
+        <p>La tarjeta cambia de color y muestra un mensaje dependiendo del valor del dato medido:</p>
+         
+        <p>
+          <ion-text color="danger">Color Rojo y "Sucio" para 32cm o más.</ion-text>
+        </p>
+        <p>
+          <ion-text color="warning">Color Amarillo y "Turbio" para 16cm o más, pero menos de 32cm.</ion-text>
+        </p>
+      
+        <p>
+          <ion-text color="success">Color Verde y "Limpio" para menos de 16cm.</ion-text> 
+        </p>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
 </ion-content>

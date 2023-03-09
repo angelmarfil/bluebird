@@ -6,13 +6,13 @@ export const environment = {
   production: false,
   
   firebaseConfig: {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>',
-    appId: '<your-app-id>'
+    apiKey: "AIzaSyDhP1G6obl5qjfwbtbERuoyJhZkUUUFmuI",
+    authDomain: "bebedero-marfil.firebaseapp.com",
+    databaseURL: "https://bebedero-marfil-default-rtdb.firebaseio.com",
+    projectId: "bebedero-marfil",
+    storageBucket: "bebedero-marfil.appspot.com",
+    messagingSenderId: "262417929504",
+    appId: "1:262417929504:web:db34042840a1d70502b345"
   }
 };
 

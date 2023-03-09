@@ -3,6 +3,18 @@
     <ion-title>
       Monitoreo
     </ion-title>
+    <ion-badge *ngIf="loaded" slot="end" [color]="wifiSSID ? 'primary' : 'danger'">
+      <ion-icon name="wifi"></ion-icon>
+      <span *ngIf="wifiSSID">{{ wifiSSID }}</span>
+      <span *ngIf="!wifiSSID"> No conectado</span>
+    </ion-badge>
+      <ion-icon *ngIf="!loaded" slot="end" name="wifi"></ion-icon>
+      <ion-skeleton-text *ngIf="!loaded" slot="end" [animated]="true" style="width: 60px"></ion-skeleton-text>
+      <ion-buttons slot="end">
+        <ion-button (click)="signOut()">
+          <ion-icon name="log-out" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,20 +25,57 @@
     </ion-toolbar>
   </ion-header>
 
-      <ion-card color="danger">
-        <ion-card-header>
-          <ion-icon name="eyedrop" size="large"></ion-icon>
-          <ion-card-title>Limpio</ion-card-title>
-          <ion-card-subtitle>Contaminación del agua</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
+  <h1>Bienvenido/a</h1>
 
-      <ion-card color="primary">
-        <ion-card-header>
-          <ion-icon name="logo-twitter" size="large"></ion-icon>
-          <ion-card-title>Presentes</ion-card-title>
-          <ion-card-subtitle>Presencia de Aves</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
+  <ion-card *ngIf="loaded" [color]="nivelAgua >= 32 ? 'success' : (nivelAgua >= 16 ? 'warning' : 'danger')">
+    <ion-card-header>
+      <ion-icon name="water" size="large"></ion-icon>
+      <ion-card-title>{{ nivelAgua | textoNivel }}</ion-card-title>
+      <ion-card-subtitle>Nivel del agua</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngIf="loaded" [color]="contaminacionAgua >= 32 ? 'danger' : (contaminacionAgua >= 16 ? 'warning' : 'success')">
+    <ion-card-header>
+      <ion-icon name="nuclear" size="large"></ion-icon>
+      <ion-card-title>{{ contaminacionAgua | textoContaminacion }}</ion-card-title>
+      <ion-card-subtitle>Contaminación del agua</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngIf="loaded" [color]="presenciaAves === true ? 'success' : 'danger'">
+    <ion-card-header>
+      <ion-icon name="logo-twitter" size="large"></ion-icon>
+      <ion-card-title>{{ presenciaAves | textoAves }}</ion-card-title>
+      <ion-card-subtitle>Presencia de Aves</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  
+  <ion-card *ngIf="!loaded">
+    <ion-card-header>
+      <ion-icon name="water" size="large"></ion-icon>
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 70px"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 90px"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngIf="!loaded">
+    <ion-card-header>
+      <ion-icon name="nuclear" size="large"></ion-icon>
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 70px"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 90px"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngIf="!loaded">
+    <ion-card-header>
+      <ion-icon name="logo-twitter" size="large"></ion-icon>
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 70px"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 90px"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
 
 </ion-content>
+
